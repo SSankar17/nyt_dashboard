@@ -1,2 +1,4 @@
-API_KEY = "zsZpQVZU8PW8ZEu92NU761wERhUpZxmO" #replace with your api key
+# API_KEY =  
+
+#replace with your api key from the NYT Dev website
 
