@@ -17,7 +17,10 @@ The analysis aims to answer the following key questions:
 3.  What is the relationship between a book's description, the overall sentiment, and its genre? 
 4.  How do critical reviews (online and Sunday book reviews) correlate with bestseller performance? 
 5.  Are there identifiable seasonal trends or social events that influence list rankings?
-6.  How do co-authored books perform compared to single-author books on the NYT Best Sellers list? 
+6.  How do co-authored books perform compared to single-author books on the NYT Best Sellers list?
+
+## Usage
+To use this app, create a clone on your local device. Open Docker, MongoDB Compass, and your IDE. In your IDE, run the line `streamlit run Main_Page-Streamlit_App.py` in your base terminal. Ensure that there is a MongoDB connection named nyt_bestsellers. 
 
 ## Technology Stack
 
@@ -26,7 +29,6 @@ The project utilizes a unified Python-centric environment for data workflow, con
 | Tool | Purpose | Reasoning/Details |
 | :--- | :--- | :--- |
 | **Python**  | Data Extraction, Transformation, and Analysis (ETL) | Provides a unified environment for API extraction, ETL pipelines, and analysis, with seamless integration capabilities |
-| **PostgreSQL (SQL)** [cite: 163] | Structured Data Storage/Load Option A | Enables fast, relational queries to aggregate metrics like "average weeks on list per publisher". |
 | **MongoDB (NoSQL)**  | Semi-Structured Data Storage/Load Option B | Offers flexibility to handle nested JSON objects directly from the NYT Books API without strict schemas. Ideal for large, evolving datasets. |
 | **Streamlit** | Interactive User Interface / Consumption | Deploys an interactive dashboard for non-technical audiences to explore insights and visualizations without coding. |
 
