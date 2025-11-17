@@ -20,7 +20,12 @@ The analysis aims to answer the following key questions:
 6.  How do co-authored books perform compared to single-author books on the NYT Best Sellers list?
 
 ## Usage
-To use this app, create a clone on your local device. Open Docker, MongoDB Compass, and your IDE. In your IDE, run the line `streamlit run Main_Page-Streamlit_App.py` in your base terminal. Ensure that there is a MongoDB connection named nyt_bestsellers. 
+To use this app, create a clone on your local device. Open Docker, MongoDB Compass, and your IDE. 
+
+Open `config.py` and add your API key from the [NYT developers website](https://developer.nytimes.com/accounts/login). Once you have an API key set in, you have your configuration set up.
+
+In your IDE, run the line `streamlit run Main_Page-Streamlit_App.py` in your base terminal. Ensure that there is a MongoDB connection named nyt_bestsellers. 
+
 
 ## Technology Stack
 
