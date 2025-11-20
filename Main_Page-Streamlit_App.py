@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 
-# to run app, copy paste in terminal: streamlit run Main_Page-Streamlit_App.py
+# to run app, copy paste in terminal: streamlit run Main_Page_-_Streamlit_App.py
 
 st.set_page_config(
     page_title="NYT Bestsellers Dashboard - Home Page",
