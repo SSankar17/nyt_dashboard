@@ -6,7 +6,7 @@
 
 ## Overview
 
-This project focuses on building a data engineering pipeline to extract, transform, load, and analyze data from the **New York Times (NYT) Best Sellers list**. The goal is to provide valuable insights into national reading trends, bestseller success drivers, and book performance for publishers and authors. The NYT Best Sellers list is published every Wednesday and ranks top-selling books in the United States, categorized by format (e.g., hardcover, e-book) and genre (e.g., Fiction, Nonfiction, Children's).
+This project focuses on building a data engineering pipeline to extract, transform, load, and analyze data from the **New York Times (NYT) Best Sellers list** using the [NYT API](https://developer.nytimes.com/docs/books-product/1/overview). Our goal is to provide valuable insights into national reading trends, bestseller success drivers, and book performance for major publishing houses and authors. The NYT Best Sellers list is published every Wednesday and ranks top-selling books in the United States, categorized by format (e.g., hardcover, e-book) and genre (e.g., Fiction, Nonfiction, Children's).
 
 ## Research Questions
 
@@ -15,44 +15,36 @@ The analysis aims to answer the following key questions:
 1.  Which book attributes have the strongest association with placement on the NYT bestseller list?
 2.  Which publishers have books that consistently remain at the top of the list versus those that fluctuate often?
 3.  What is the relationship between a book's description, the overall sentiment, and its genre? 
-4.  How do critical reviews (online and Sunday book reviews) correlate with bestseller performance? 
+4.  When many major publishers launch at the same time, does heavy competition on a bestseller list’s debut lead to shorter lifespans for books on that list? 
 5.  Are there identifiable seasonal trends or social events that influence list rankings?
-6.  How do co-authored books perform compared to single-author books on the NYT Best Sellers list?
+6.  How do co-authored books perform compared to single-author books on the NYT Best Sellers list? 
 
-## Usage
-To use this app, create a clone on your local device. Open Docker, MongoDB Compass, and your IDE. 
-
-Open `config.py` and add your API key from the [NYT developers website](https://developer.nytimes.com/accounts/login). Once you have an API key set in, you have your configuration set up.
-
-In your IDE, run the line `streamlit run Main_Page-Streamlit_App.py` in your base terminal. Ensure that there is a MongoDB connection named nyt_bestsellers. 
-
-
-## Technology Stack
+## Technologies Utilized
 
 The project utilizes a unified Python-centric environment for data workflow, connecting to various storage and visualization tools.
 
 | Tool | Purpose | Reasoning/Details |
 | :--- | :--- | :--- |
 | **Python**  | Data Extraction, Transformation, and Analysis (ETL) | Provides a unified environment for API extraction, ETL pipelines, and analysis, with seamless integration capabilities |
-| **MongoDB (NoSQL)**  | Semi-Structured Data Storage/Load Option B | Offers flexibility to handle nested JSON objects directly from the NYT Books API without strict schemas. Ideal for large, evolving datasets. |
+| **Neo4j** | Visualizing our Data | Provides an effective method of visualizing relationsips between attributes and entitiies in the API.  |
+| **MongoDB (NoSQL)**  | Semi-Structured Data Storage | Offers flexibility to handle nested JSON objects directly from the NYT Books API without strict schemas. Ideal for large, evolving datasets. |
 | **Streamlit** | Interactive User Interface / Consumption | Deploys an interactive dashboard for non-technical audiences to explore insights and visualizations without coding. |
 
 ## Data Source & Procurement
 
 ### Source Details
-* **Data Source:** New York Times Developer API (Books API).
+* **Data Source:** [New York Times Developer API (Books API)](https://developer.nytimes.com/docs/books-product/1/overview).
 * **Format:** JSON via HTTP GET requests.
 * **Data Coverage:** Weekly and monthly rankings across categories like Fiction, Nonfiction, and Children's Books.
-* **Data Timeframe:** January 2019 to October 2025.
+* **Data Timeframe:** Varies but generally from January 2019 to October 2025, with some research questions exploring longer or shorter timeframes.
 * **Approximate DataFrame Size:** 1.36 GB.
 
 ### Procurement Strategy
 1.  **Access Method:** Conduct REST API calls using the NYT Developer Portal.
 2.  **Challenge:** API key creation is limited (one week per call) and subject to rate limits.
 3.  **Solutions:**
-    * Store data locally in a SQL or NoSQL database.
-    * Procure data by converting API information to CSV.
-4.  **Data Validation:** Implement procedures to check for duplicates, missing timestamps, and inaccurate data types.
+    * Store data locally in a NoSQL database (MongoDB).
+    * Procure data by converting API information to CSV for certain investigations.
 
 ## ETL Pipeline
 
@@ -72,8 +64,7 @@ The project follows a standard Extract, Transform, Load (ETL) process:
     * Format data types.
 
 ### 3. Load 
-* **Option A (NoSQL):** Insert JSON files directly into MongoDB.
-* **Option B (SQL):** Load data as a table named "books" (with columns like Title, Author, Rank) into PostgreSQL.
+* **MongoDB and Neo4j:** Insert JSON files directly into MongoDB and Neo4j.
 
 ### 4. Consumption 
 * **Deployment:** Deploy a user interface using **Streamlit** to provide dynamic dashboards and interactive data display.
