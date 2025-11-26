@@ -15,8 +15,8 @@ The analysis aims to answer the following key questions:
 1.  Which book attributes have the strongest association with placement on the NYT bestseller list?
 2.  Which publishers have books that consistently remain at the top of the list versus those that fluctuate often?
 3.  What is the relationship between a book's description, the overall sentiment, and its genre? 
-4.  When many major publishers launch at the same time, does heavy competition on a bestseller list’s debut lead to shorter lifespans for books on that list? 
-5.  Are there identifiable seasonal trends or social events that influence list rankings?
+4.  Are there identifiable seasonal trends or social events that influence list rankings?
+5.  When many major publishers launch at the same time, does heavy competition on a bestseller list’s debut lead to shorter lifespans for books on that list? 
 6.  How do co-authored books perform compared to single-author books on the NYT Best Sellers list? 
 
 ## Technologies Utilized
