@@ -19,9 +19,7 @@ from pymongo import MongoClient
 
 Image.MAX_IMAGE_PIXELS = None
 
-# -----------------------------------------------------------------------------
-# MONGO DB CONNECTION AND DATA RETRIEVAL (Integrated)
-# -----------------------------------------------------------------------------
+# MONGO DB CONNECTION AND DATA RETRIEVAL 
 
 @st.cache_resource
 def init_mongo_collection():
@@ -59,9 +57,7 @@ def get_all_historical_books():
         return pd.DataFrame() # Return empty DataFrame on failure
 
 
-# -----------------------------------------------------------------------------
-# HELPER FUNCTIONS (Sentiment Analysis and Genre Mapping)
-# -----------------------------------------------------------------------------
+# HELPER FUNCTIONS 
 
 @st.cache_data
 def perform_sentiment_analysis(df):
@@ -102,14 +98,14 @@ def perform_sentiment_analysis(df):
     
     return df
 
-# *** COMPREHENSIVE GENRE MAPPING (Kept for correct filtering) ***
+# genre key mapping
 def get_genre_mapping():
     """
     Returns a comprehensive mapping of NYT list names (slugs and human-readable)
     to standardized top-level genres.
     """
     return {
-        # --- Fiction Categories ---
+        # fiction categories
         'combined-print-and-e-book-fiction': 'Fiction',
         'hardcover-fiction': 'Fiction',
         'paperback-trade-fiction': 'Fiction',
@@ -117,7 +113,7 @@ def get_genre_mapping():
         'mass-market-paperback-fiction': 'Fiction',
         'trade-fiction-paperback': 'Fiction',
         
-        # --- Nonfiction Categories ---
+        # nonfiction categories
         'combined-print-and-e-book-nonfiction': 'Nonfiction',
         'hardcover-nonfiction': 'Nonfiction',
         'paperback-nonfiction': 'Nonfiction',
@@ -126,20 +122,20 @@ def get_genre_mapping():
         'travel': 'Nonfiction',
         'religion-spirituality-and-faith': 'Nonfiction',
         
-        # --- Advice/How-To Categories (These will be dropped by get_genre_order) ---
+        # advice
         'advice-how-to-and-miscellaneous': 'Advice',
         'advice-and-how-to': 'Advice',
         'food-and-fitness': 'Advice',
         'sports': 'Advice',
         'health': 'Advice',
         
-        # --- Young Adult Categories (These will be dropped by get_genre_order) ---
+        # YA
         'series-books': 'Young Adult',
         'young-adult-hardcover': 'Young Adult',
         'young-adult-paperback': 'Young Adult',
         'young-adult': 'Young Adult',
         
-        # --- Children's Categories (These will be dropped by get_genre_order) ---
+        # Childrens
         'picture-books': 'Children',
         'childrens-picture-books': 'Children',
         'childrens-middle-grade': 'Children',
@@ -147,20 +143,16 @@ def get_genre_mapping():
         'middle-grade-paperback-series': 'Children',
         'middle-grade-hardcover': 'Children',
         
-        # --- Specific Categories (These will be dropped by get_genre_order) ---
+        # specific
         'business-books': 'Business',
         'hardcover-business': 'Business',
     }
 
-# *** FIX: RESTRICTED GENRE ORDER ***
 def get_genre_order():
     """Restricts the application to only plot Fiction and Nonfiction."""
     return ['Fiction', 'Nonfiction']
-# ***********************************
 
-# -----------------------------------------------------------------------------
 # PAGE CONFIGURATION
-# -----------------------------------------------------------------------------
 
 st.set_page_config(
     page_title="NYT Best Sellers Analysis",
