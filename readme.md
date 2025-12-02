@@ -64,7 +64,7 @@ The project follows a standard Extract, Transform, Load (ETL) process:
     * Format data types.
 
 ### 3. Load 
-* **MongoDB and Neo4j:** Insert JSON files directly into MongoDB and Neo4j using the `nyt_api.ipynb` and `get_neo4j_data.ipynb` notebooks.
+* **MongoDB and Neo4j:** Insert JSON files directly into MongoDB and Neo4j using the `nyt_api.ipynb` and `upload_neo4js_data.ipynb` notebooks.
 
 ### 4. Consumption 
 * **Deployment:** Format the data into actionable insights using **Python** and deploy a user interface using **Streamlit** in the command line to provide dynamic dashboards and interactive data display.
