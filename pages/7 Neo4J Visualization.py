@@ -5,16 +5,13 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="NYT Bestsellers Graph", layout="wide")
 
-# -----------------------------
 # NEO4J CONNECTION SETTINGS
-# -----------------------------
 NEO4J_URI = "neo4j://127.0.0.1:7687"
 NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "12345678"     # your password
+NEO4J_PASSWORD = "12345678"     
 NEO4J_DB = "booksnyt"
 
 
-# Consistent colors by label
 COLOR_MAP = {
     "Book": "#6A0DAD",      # purple
     "Author": "#1E88E5",    # blue
@@ -26,7 +23,6 @@ COLOR_MAP = {
 
 @st.cache_resource
 def get_driver():
-    # FIX: Increase connection_timeout to 300 seconds (5 minutes) for large imports
     return GraphDatabase.driver(
         NEO4J_URI, 
         auth=(NEO4J_USER, NEO4J_PASSWORD),
@@ -77,7 +73,7 @@ def fetch_graph(limit=200):
             x = record["x"]
             r = record["r"]
 
-            # ---- Book node ----
+            #  Book node 
             if b.id not in nodes:
                 nodes[b.id] = {
                     "id": b.id,
@@ -90,7 +86,7 @@ def fetch_graph(limit=200):
                     },
                 }
 
-            # ---- Neighbor node ----
+            #  Neighbor node 
             x_labels = list(x.labels)
             x_group = x_labels[0] if x_labels else "Node"
 
@@ -126,7 +122,7 @@ def fetch_graph(limit=200):
                     "props": props,
                 }
 
-            # ---- Relationship edge ----
+            #  Relationship edge 
             rel_type = type(r).__name__ if hasattr(r, "__class__") else "RELATED_TO"
             edges.append((b.id, x.id, rel_type))
 
@@ -163,7 +159,7 @@ def make_pyvis_graph(nodes, edges, height="650px", width="100%"):
     for src, dst, rel_type in edges:
         net.add_edge(src, dst, title=rel_type)
 
-    # Cleaner layout for presentation (less “spaghetti”)
+    
     net.set_options("""
     var options = {
       "nodes": {
@@ -191,9 +187,9 @@ def make_schema_graph():
     Book in the center, connected to Author, Publisher, Season, ListWeek.
     """
     net = Network(height="350px", width="100%", bgcolor="white", font_color="black")
-    net.toggle_physics(False)  # keep it static
+    net.toggle_physics(False)  
 
-    # Fixed positions for a clean schema look
+    
     net.add_node("Book", label="Book", color=COLOR_MAP["Book"], x=0, y=0, physics=False)
     net.add_node("Author", label="Author", color=COLOR_MAP["Author"], x=200, y=0, physics=False)
     net.add_node("Publisher", label="Publisher", color=COLOR_MAP["Publisher"], x=-200, y=0, physics=False)
@@ -217,7 +213,7 @@ def make_schema_graph():
 
 
 def main():
-    # ---------- HEADER ----------
+    #  HEADER 
     st.title("NYT Book Bestsellers - Graph Overview (Neo4j)")
     st.markdown(
         """
@@ -228,7 +224,7 @@ def main():
 
     node_overview, rel_overview = get_overview()
 
-    # ---------- SIDEBAR ----------
+    #  SIDEBAR 
     st.sidebar.header("Legend")
 
     st.sidebar.subheader("Node types")
@@ -254,7 +250,7 @@ def main():
         help="Higher values show more of the graph but can look busier.",
     )
 
-    # ---------- SCHEMA GRAPH (like db.schema.visualization) ----------
+    # -- SCHEMA GRAPH (like db.schema.visualization) --
     st.subheader("Data model overview")
     st.markdown(
         "This schematic view mirrors **Neo4j's schema visualization**: "
@@ -269,7 +265,7 @@ def main():
 
     st.markdown("...")
 
-    # ---------- MAIN INTERACTIVE GRAPH ----------
+    #  MAIN INTERACTIVE GRAPH 
     st.subheader("Interactive graph of real NYT bestsellers")
 
     nodes, edges = fetch_graph(limit=limit)
