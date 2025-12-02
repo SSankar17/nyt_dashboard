@@ -280,8 +280,4 @@ def app_page():
     with st.expander("Show Full Publisher Statistics Table"):
         st.dataframe(publisher_stats_df, use_container_width=True)
     
-    
-
-
-
 app_page()
