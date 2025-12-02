@@ -1,7 +1,3 @@
-# =========================================================================
-# STREAMLIT APP SCRIPT (app.py) - MODIFIED TO USE ALTAIR, LOCAL JSON, AND REMOVE INFO MESSAGES
-# =========================================================================
-
 import streamlit as st
 import pandas as pd
 import requests
