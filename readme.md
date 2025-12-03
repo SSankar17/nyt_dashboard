@@ -8,7 +8,7 @@
 
 This project focuses on building a data engineering pipeline to extract, transform, load, and analyze data from the **New York Times (NYT) Best Sellers list** using the [NYT API](https://developer.nytimes.com/docs/books-product/1/overview). Our goal is to provide valuable insights into national reading trends, bestseller success drivers, and book performance for major publishing houses and authors. The NYT Best Sellers list is published every Wednesday and ranks top-selling books in the United States, categorized by format (e.g., hardcover, e-book) and genre (e.g., Fiction, Nonfiction, Children's). 
 
-Here is a link to our (canva presentation)[https://www.canva.com/design/DAG5WDuq8TM/X7Dz73N7KIOArkT-9rEVBg/view?utm_content=DAG5WDuq8TM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc272fd8673].
+Here is a link to our [canva presentation](https://www.canva.com/design/DAG5WDuq8TM/X7Dz73N7KIOArkT-9rEVBg/view?utm_content=DAG5WDuq8TM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc272fd8673).
 
 ## Research Questions
 
